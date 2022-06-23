@@ -24,7 +24,8 @@ ls -l $DIR'''
       agent any
       steps {
         unstash 'reports'
-        sh 'cp -r /report/* /root/docker_data/nginx/data/'
+        sh '''echo $PWD
+ls -la'''
       }
     }
 
