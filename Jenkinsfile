@@ -11,12 +11,12 @@ pipeline {
       }
       steps {
         sh '''echo "$PWD"
-DIR=`date "+%Y%m%d%H%M%S"`
-mkdir $DIR
+export DIR=`date "+%Y%m%d%H%M%S"`
+DIR=$PWD/report/:$DIR
+mkdir -p $DIR
 jmeter -n -t SimpleTestPlan.jmx -l result.jtl -e -o $DIR
-ls -l $DIR
-cp -r $DIR /report/'''
-        stash(name: 'reports', includes: '/report/**/*')
+ls -l $DIR'''
+        stash(name: 'reports', includes: '/*/report/**')
       }
     }
 
