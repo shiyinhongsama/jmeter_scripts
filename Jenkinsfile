@@ -25,7 +25,8 @@ ls -l $DIR'''
       steps {
         unstash 'reports'
         sh '''echo $PWD
-ls -la'''
+ls -la
+cp -r report/* /root/docker_data/nginx/data'''
       }
     }
 
