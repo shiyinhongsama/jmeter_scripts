@@ -12,7 +12,8 @@ pipeline {
       steps {
         sh '''DIR=`date "+%Y-%m-%d %H:%M:%S"`
 mkdir $DIR
-jmeter -n -t SimpleTestPlan.jmx -l result.jtl -e -o $DIR'''
+jmeter -n -t SimpleTestPlan.jmx -l result.jtl -e -o $DIR
+ls -l $DIR'''
       }
     }
 
