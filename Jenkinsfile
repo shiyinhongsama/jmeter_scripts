@@ -4,13 +4,13 @@ pipeline {
     stage('performance test') {
       agent {
         docker {
-          image 'justb4/jmeter'
-          args '-v  "/var/run/docker.sock:/var/run/docker.sock"'
+          image 'zm/jmeter'
         }
 
       }
       steps {
-        sh '''DIR=`date "+%Y%m%d%H%M%S"`
+        sh '''PWD
+DIR=`date "+%Y%m%d%H%M%S"`
 mkdir $DIR
 jmeter -n -t SimpleTestPlan.jmx -l result.jtl -e -o $DIR
 ls -l $DIR'''
