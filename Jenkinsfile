@@ -4,7 +4,7 @@ pipeline {
     stage('performance test') {
       agent {
         docker {
-          image 'zm/jmeter'
+          image 'zm/jmeter:0.0.1'
         }
 
       }
