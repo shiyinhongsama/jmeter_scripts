@@ -1,0 +1,10 @@
+execution:
+  - scenario: simple
+
+scenarios:
+  simple: SimpleTestPlan.jmx
+
+modules:
+  jmeter:
+    download-link: https://mirrors.tuna.tsinghua.edu.cn/apache/jmeter/binaries/apache-jmeter-{version}.zip
+    version: 5.5
