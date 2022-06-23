@@ -4,7 +4,8 @@ pipeline {
     stage('performance test') {
       agent {
         docker {
-          image 'zm/jmeter:0.0.1'
+          args '-v /root/docker_data/nginx/data:/report'
+          image 'zhangmin/jmeter:0.0.1'
         }
 
       }
@@ -14,6 +15,15 @@ DIR=`date "+%Y%m%d%H%M%S"`
 mkdir $DIR
 jmeter -n -t SimpleTestPlan.jmx -l result.jtl -e -o $DIR
 ls -l $DIR'''
+        stash(name: 'reports', includes: '/report/**')
+      }
+    }
+
+    stage('deploy reports') {
+      agent any
+      steps {
+        unstash 'reports'
+        sh 'cp -r /report/* /root/docker_data/nginx/data/'
       }
     }
 
