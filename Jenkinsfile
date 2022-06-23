@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh '''echo $PWD
+        sh '''echo "$PWD"
 DIR=`date "+%Y%m%d%H%M%S"`
 mkdir $DIR
 jmeter -n -t SimpleTestPlan.jmx -l result.jtl -e -o $DIR
