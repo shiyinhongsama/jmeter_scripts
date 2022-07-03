@@ -8,8 +8,8 @@ pipeline {
     skipDefaultCheckout true
   }
   triggers {
-     //秒 分 时 日 月 星期 年
-     cron('0 0 0 ? * *')
+     //分 时 日 月 星期
+     cron('0 0 * * *')
     }
   stages {
     stage('clone code'){
